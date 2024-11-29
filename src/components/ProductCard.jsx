@@ -34,7 +34,7 @@ const ProductCard = ({ product }) => {
           <Box
             component="img"
             src={product.image}
-            alt="Mens Casual Slim Fit"
+            alt="Product Title"
             sx={{
               width: "100%",
               objectFit: "contain",

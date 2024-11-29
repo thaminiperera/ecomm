@@ -12,6 +12,7 @@ import {
 import SearchIcon from "@mui/icons-material/Search";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import { useNavigate } from "react-router-dom";
+import TopBar from "../components/TopBar.jsx";
 
 const Dashboard = () => {
   const [search, setSearch] = useState();
@@ -42,40 +43,7 @@ const Dashboard = () => {
 
   return (
     <Box>
-      <Grid2 container alignItems={"center"} justifyContent={"space-between"} sx={{width :"100%"}}>
-        <Grid2 container alignItems={"center"} gap={2}>
-          <Box
-            component="img"
-            src="../../logo.svg"
-            sx={{ width: "100px", padding: 2, marginLeft: 2 }}
-          ></Box>
-          <Box
-            sx={{
-              display: {
-                xs: "none",
-                sm: "none",
-                md: "block",
-              },
-            }}
-          >
-            <Typography variant="h4">Ecomm</Typography>
-          </Box>
-        </Grid2>
-        <Grid2
-          container
-          alignItems={"center"}
-          justifyContent={"flex-end"}
-          gap={2}
-          columns={{ xs: 1 }}
-        >
-          <Typography variant="h6" sx={{ padding: 2, marginLeft: 2 }}>
-            Hi Graham
-          </Typography>
-          <Button varient="outlined" sx={{ marginRight: 2 }} onClick={handleCartClick}>
-            <ShoppingCartIcon fontSize="large" />
-          </Button>
-        </Grid2>
-      </Grid2>
+      <TopBar/>
       <Grid2
         container
         alignItems={"center"}
