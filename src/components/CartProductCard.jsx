@@ -1,9 +1,40 @@
-import React, { useState } from "react";
-import { Grid2, Button, Stack, Typography, Box, Paper, IconButton } from "@mui/material";
+import React, { useEffect, useState } from "react";
+import {
+  Grid2,
+  Stack,
+  Typography,
+  Box,
+  Paper,
+  IconButton,
+} from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
+import QuantityMeter from "./QuantityMeter";
+import { values } from "../constants/values.js";
+import { useUser } from "../context/UserContext.jsx";
 
 const CartProductCard = ({ product }) => {
+  const {userData, updateUser} = useUser()
   const [quantity, setQuantity] = useState(1);
+
+  useEffect(() => {
+    const currentQuantity = userData.cart ? userData.cart.filter((item) => item.id == product.id)[0].quantity : null
+    setQuantity(currentQuantity)
+  }, [])
+
+  const handleClose = () => {
+    updateUser({
+      cart:
+        userData.cart.length > 0
+          ? userData.cart.map((item) =>
+              item.id === product.id
+                ? { ...item, quantity: 0 }
+                : item
+            )
+          : [...userData.cart, { ...product, quantity: 0 }],
+    });
+    setQuantity(0);
+  }
+
   return (
     <Paper sx={{ width: "100%", margin: 0.5 }}>
       <Grid2
@@ -13,8 +44,9 @@ const CartProductCard = ({ product }) => {
         gap={3}
         sx={{ padding: 1 }}
       >
-        <IconButton sx={{backgroundColor:"#dddddd", borderRadius:"50%", }}><CloseIcon fontSize="small" /></IconButton>
-        
+        <IconButton sx={{ backgroundColor: "#dddddd", borderRadius: "50%" }} onClick={handleClose}>
+          <CloseIcon fontSize="small" />
+        </IconButton>
 
         <Stack>
           <Box
@@ -52,9 +84,7 @@ const CartProductCard = ({ product }) => {
         </Stack>
 
         <Grid2 container alignItems={"center"} gap={2}>
-          <Button variant="outlined">-</Button>
-          <Typography>{quantity}</Typography>
-          <Button variant="outlined">+</Button>
+          <QuantityMeter quantity={quantity} setQuantity={setQuantity} product={product}/>
         </Grid2>
         <Stack>
           <Typography
@@ -62,8 +92,8 @@ const CartProductCard = ({ product }) => {
           >
             Sub Total
           </Typography>
-          <Typography sx={{ fontWeight: "bold" }}>
-            Rs. {Math.floor(product.price * 290.14) * quantity}
+          <Typography sx={{ fontWeight: "bold", minWidth: "100px" }}>
+            Rs. {Math.floor(product.price * values.USDTOLKR) * quantity}
           </Typography>
         </Stack>
       </Grid2>

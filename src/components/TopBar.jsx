@@ -2,12 +2,15 @@ import React from "react";
 import { Box, Grid2, Typography, Button } from "@mui/material";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import { useNavigate } from "react-router-dom";
+import { useUser } from "../context/UserContext";
 
 const TopBar = () => {
   const navigate = useNavigate();
+  const { userData } = useUser();
+
 
   const handleCartClick = () => {
-    navigate("/cart"); 
+    navigate("/cart");
   };
 
   const handleLogoClick = () => {
@@ -20,7 +23,10 @@ const TopBar = () => {
       justifyContent={"space-between"}
       sx={{ width: "100%" }}
     >
-      <Button onClick={handleLogoClick} sx={{paddingRight: 3, borderRadius: "50%"}}>
+      <Button
+        onClick={handleLogoClick}
+        sx={{ paddingRight: 3, borderRadius: "50%" }}
+      >
         <Grid2 container alignItems={"center"} gap={0.5}>
           <Box
             component="img"
@@ -49,7 +55,7 @@ const TopBar = () => {
         columns={{ xs: 1 }}
       >
         <Typography variant="h6" sx={{ padding: 2, marginLeft: 2 }}>
-          Hi Graham
+          Hi {userData.firstName}
         </Typography>
         <Button
           varient="outlined"

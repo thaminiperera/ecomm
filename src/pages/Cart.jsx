@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import CartProductCard from "../components/CartProductCard";
 import {
   Button,
@@ -9,9 +9,23 @@ import {
   Typography,
 } from "@mui/material";
 import TopBar from "../components/TopBar";
-import products from "../db/Products.js";
+import { useUser } from "../context/UserContext.jsx";
+import { values } from "../constants/values.js";
 
 const Cart = () => {
+  const {userData} = useUser()
+  const [total, setTotal] = useState(0);
+  const [additional, setAddititonal] = useState(0);
+
+useEffect(() => {
+  const calculatedTotal = userData.cart.reduce((acc, item) => {
+    return acc + Math.floor(item.price * values.USDTOLKR) * item.quantity;
+  }, 0);
+
+  setTotal(calculatedTotal);
+}, [userData.cart, values.USDTOLKR]);
+
+
   return (
     <div>
       <TopBar />
@@ -20,8 +34,7 @@ const Cart = () => {
           <Stack>
             <Typography variant="h6" sx={{ padding: 1.5, backgroundColor:"#eeeeee", borderRadius: "8px" }}>Purchase Items</Typography>
             <Divider sx={{marginBottom: 2}}/>
-            <CartProductCard product={products[0]} />
-            <CartProductCard product={products[5]} />
+            {userData.cart.length > 0 ? userData.cart.map((product) => <CartProductCard key={product.id} product={product}/>) : <Typography sx={{width: "100%", padding: 2}}>Add products to Cart...</Typography>}
             <Divider sx={{marginTop:2}}/>
           </Stack>
         </Grid2>
@@ -41,7 +54,7 @@ const Cart = () => {
               variant="body1"
               sx={{ padding: 1, color: "#000000", textAlign: "right" }}
             >
-              Rs. 444
+              Rs. {total}
             </Typography>
             <Typography
               variant="body1"
@@ -53,7 +66,7 @@ const Cart = () => {
               variant="body1"
               sx={{ padding: 1, color: "#000000", textAlign: "right" }}
             >
-              Rs. 0
+              Rs. {additional}
             </Typography>
             <Divider />
             <Typography
@@ -71,7 +84,7 @@ const Cart = () => {
                 fontWeight: "bold",
               }}
             >
-              Rs. 555
+              Rs. {total + additional}
             </Typography>
             <Divider />
             <Button variant="contained" sx={{ width: "100%", margin: 2 }}>

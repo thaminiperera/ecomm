@@ -13,8 +13,10 @@ import SearchIcon from "@mui/icons-material/Search";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import { useNavigate } from "react-router-dom";
 import TopBar from "../components/TopBar.jsx";
+import { useUser } from "../context/UserContext.jsx";
 
 const Dashboard = () => {
+  const {userData} = useUser()
   const [search, setSearch] = useState();
   const [productData, setProductData] = useState(products);
   const navigate = useNavigate()
