@@ -6,7 +6,7 @@ import { useUser } from "../context/UserContext";
 
 const TopBar = () => {
   const navigate = useNavigate();
-  const { userData } = useUser();
+  const { userData, logout } = useUser();
 
   const handleCartClick = () => {
     navigate("/cart");
@@ -15,6 +15,11 @@ const TopBar = () => {
   const handleLogoClick = () => {
     navigate("/dashboard");
   };
+
+  const handleLogout = () => {
+    navigate("/login")
+    logout()
+  }
   return (
     <Grid2
       container
@@ -24,13 +29,13 @@ const TopBar = () => {
     >
       <Button
         onClick={handleLogoClick}
-        sx={{ paddingRight: 3, borderRadius: "50%" }}
+        sx={{ paddingRight: 3, borderRadius: "50%"}}
       >
         <Grid2 container alignItems={"center"} gap={0.5}>
           <Box
             component="img"
             src="../../logo.svg"
-            sx={{ width: "100px", padding: 1, marginLeft: 2 }}
+            sx={{ width: {xs : "50px", sm: "60px"}, padding: 1, marginLeft: 2 }}
           ></Box>
           <Box
             sx={{
@@ -54,7 +59,7 @@ const TopBar = () => {
         columns={{ xs: 1 }}
         sx={{ margin: 2 }}
       >
-        <Button variant="outlined">Logout</Button>
+        <Button variant="outlined" onClick={handleLogout}>Logout</Button>
         <Typography variant="h6">Hi {userData.firstName}</Typography>
         <Button varient="outlined" onClick={handleCartClick}>
           <ShoppingCartIcon fontSize="large" />
