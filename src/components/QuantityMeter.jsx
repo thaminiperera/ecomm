@@ -5,7 +5,6 @@ import { useNavigate } from "react-router-dom";
 
 const QuantityMeter = ({ quantity, setQuantity, product }) => {
   const { userData, updateUser } = useUser();
-  //const [quantity, setQuantity] = useState(0);
   const [addToCart, setAddToCart] = useState(false);
   const navigate = useNavigate()
 

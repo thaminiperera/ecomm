@@ -1,21 +1,12 @@
 import React, { useState } from "react";
 import ProductCard from "../components/ProductCard";
 import products from "../db/Products.js";
-import {
-  Box,
-  Button,
-  Divider,
-  Grid2,
-  TextField,
-  Typography,
-} from "@mui/material";
+import { Box, Button, Grid2, TextField } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
-import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
+
 import { useNavigate } from "react-router-dom";
 import TopBar from "../components/TopBar.jsx";
 import { useUser } from "../context/UserContext.jsx";
-import { SignalCellularNull } from "@mui/icons-material";
-
 
 const Dashboard = () => {
   const { userData } = useUser();
@@ -42,10 +33,10 @@ const Dashboard = () => {
   };
 
   const handleCartClick = () => {
-    navigate("/cart"); 
+    navigate("/cart");
   };
 
-  return ( 
+  return (
     <div style={{ position: "relative" }}>
       <Box>
         <TopBar />
@@ -57,11 +48,10 @@ const Dashboard = () => {
           sx={{
             margin: 2,
             marginTop: {
-              xs: "150px",  
-              sm: "100px", 
+              xs: "150px",
+              sm: "100px",
             },
           }}
-          
         >
           <SearchIcon />
           <TextField
@@ -91,7 +81,7 @@ const Dashboard = () => {
           </Grid2>
         </Box>
       </Box>
-    </div> 
+    </div>
   );
 };
 

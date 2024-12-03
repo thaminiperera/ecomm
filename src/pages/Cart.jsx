@@ -5,7 +5,6 @@ import {
   Divider,
   Grid2,
   Stack,
-  Table,
   Typography,
 } from "@mui/material";
 import TopBar from "../components/TopBar";
