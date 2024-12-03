@@ -11,36 +11,64 @@ import {
 import TopBar from "../components/TopBar";
 import { useUser } from "../context/UserContext.jsx";
 import { values } from "../constants/values.js";
+import { useNavigate } from "react-router-dom";
 
 const Cart = () => {
-  const {userData} = useUser()
+  const { userData } = useUser();
   const [total, setTotal] = useState(0);
   const [additional, setAddititonal] = useState(0);
+  const navigate = useNavigate()
 
-useEffect(() => {
-  const calculatedTotal = userData.cart.reduce((acc, item) => {
-    return acc + Math.floor(item.price * values.USDTOLKR) * item.quantity;
-  }, 0);
+  useEffect(() => {
+    const calculatedTotal = userData && userData.cart.reduce((acc, item) => {
+      return acc + Math.floor(item.price * values.USDTOLKR) * item.quantity;
+    }, 0);
 
-  setTotal(calculatedTotal);
-}, [userData.cart, values.USDTOLKR]);
-
+    setTotal(calculatedTotal);
+  }, [userData && userData.cart, values.USDTOLKR]);
 
   return (
     <div>
       <TopBar />
-      <Grid2 container justifyContent={"center"} gap={3}>
+      <Grid2
+        container
+        justifyContent={"center"}
+        gap={3}
+        sx={{
+          marginTop: {
+            xs: "150px",
+            sm: "100px",
+          },
+        }}
+      >
         <Grid2 item="true" xs={12} sm={12} lg={6} sx={{ margin: 1 }}>
           <Stack>
-            <Typography variant="h6" sx={{ padding: 1.5, backgroundColor:"#eeeeee", borderRadius: "8px" }}>Purchase Items</Typography>
-            <Divider sx={{marginBottom: 2}}/>
-            {userData.cart.length > 0 ? userData.cart.map((product) => <CartProductCard key={product.id} product={product}/>) : <Typography sx={{width: "100%", padding: 2}}>Add products to Cart...</Typography>}
-            <Divider sx={{marginTop:2}}/>
+            <Typography
+              variant="h6"
+              sx={{
+                padding: 1.5,
+                backgroundColor: "#eeeeee",
+                borderRadius: "8px",
+              }}
+            >
+              Purchase Items
+            </Typography>
+            <Divider sx={{ marginBottom: 2 }} />
+            {userData && userData.cart.length > 0 ? (
+              userData.cart.map((product) => (
+                <CartProductCard key={product.id} product={product} />
+              ))
+            ) : (
+              <Typography sx={{ width: "100%", padding: 2 }}>
+                Add products to Cart...
+              </Typography>
+            )}
+            <Divider sx={{ marginTop: 2 }} />
           </Stack>
         </Grid2>
         <Grid2 item="true" xs={12} sm={12} lg={6}>
           <Stack>
-            <Typography variant="h6" sx={{ padding: 2 } }>
+            <Typography variant="h6" sx={{ padding: 2 }}>
               Cart Total
             </Typography>
             <Divider />

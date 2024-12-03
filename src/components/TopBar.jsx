@@ -6,7 +6,7 @@ import { useUser } from "../context/UserContext";
 
 const TopBar = () => {
   const navigate = useNavigate();
-  const { userData, logout } = useUser();
+  const { userData, logout, updateUser } = useUser();
 
   const handleCartClick = () => {
     navigate("/cart");
@@ -17,8 +17,10 @@ const TopBar = () => {
   };
 
   const handleLogout = () => {
-    navigate("/login")
+    
+    
     logout()
+    navigate("/login")
   }
   return (
     <Grid2
@@ -60,7 +62,7 @@ const TopBar = () => {
         sx={{ margin: 2 }}
       >
         <Button variant="outlined" onClick={handleLogout}>Logout</Button>
-        <Typography variant="h6">Hi {userData.firstName}</Typography>
+        <Typography variant="h6">Hi {userData ? userData.firstName : "There!"}</Typography>
         <Button varient="outlined" onClick={handleCartClick}>
           <ShoppingCartIcon fontSize="large" />
         </Button>

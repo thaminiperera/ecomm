@@ -11,28 +11,39 @@ import React, { useEffect, useState } from "react";
 import QuantityMeter from "./QuantityMeter";
 import { values } from "../constants/values.js";
 import { useUser } from "../context/UserContext.jsx";
+import { useNavigate } from "react-router-dom";
 
 const ProductCard = ({ product }) => {
   const [quantity, setQuantity] = useState(0);
   const [addToCart, setAddToCart] = useState(false);
   const { userData, updateUser } = useUser();
+  const navigate = useNavigate();
 
   useEffect(() => {
-    const carted = userData.cart.filter((item) => item.id == product.id)
-    if (carted.length > 0){
-      setAddToCart(true)
-      setQuantity(carted[0].quantity ? carted[0].quantity : 0)
-    } else {
-      
-      setAddToCart(false)
+    if (userData != null) {
+      const carted =
+        userData && userData.cart.filter((item) => item.id == product.id);
+      if (carted && carted.length > 0) {
+        setAddToCart(true);
+        setQuantity(carted[0].quantity ? carted[0].quantity : 0);
+      } else {
+        setAddToCart(false);
+      }
     }
-  },[])
+  }, []);
 
   const handleAddToCart = () => {
-    setQuantity(quantity + 1);
-    updateUser({
-      cart: [...userData.cart, { ...product, quantity: quantity + 1 }],
-    });
+    if (userData == null) {
+      navigate("/login");
+    } else {
+      setQuantity(quantity + 1);
+      updateUser({
+        cart: userData && [
+          ...userData.cart,
+          { ...product, quantity: quantity + 1 },
+        ],
+      });
+    }
   };
 
   return (
@@ -72,7 +83,11 @@ const ProductCard = ({ product }) => {
 
           {quantity > 0 || addToCart ? (
             <Box sx={{ marginTop: 2 }}>
-              <QuantityMeter quantity={quantity} setQuantity={setQuantity} product={product} />
+              <QuantityMeter
+                quantity={quantity}
+                setQuantity={setQuantity}
+                product={product}
+              />
             </Box>
           ) : (
             <Button

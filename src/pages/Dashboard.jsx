@@ -14,6 +14,8 @@ import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import { useNavigate } from "react-router-dom";
 import TopBar from "../components/TopBar.jsx";
 import { useUser } from "../context/UserContext.jsx";
+import { SignalCellularNull } from "@mui/icons-material";
+
 
 const Dashboard = () => {
   const { userData } = useUser();
@@ -40,10 +42,10 @@ const Dashboard = () => {
   };
 
   const handleCartClick = () => {
-    navigate("/cart"); // Navigate to the About page
+    navigate("/cart"); 
   };
 
-  return (
+  return ( 
     <div style={{ position: "relative" }}>
       <Box>
         <TopBar />
@@ -55,8 +57,8 @@ const Dashboard = () => {
           sx={{
             margin: 2,
             marginTop: {
-              xs: "190px",  
-              sm: "120px", 
+              xs: "150px",  
+              sm: "100px", 
             },
           }}
           
@@ -89,7 +91,7 @@ const Dashboard = () => {
           </Grid2>
         </Box>
       </Box>
-    </div>
+    </div> 
   );
 };
 
