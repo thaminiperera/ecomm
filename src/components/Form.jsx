@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Grid from "@mui/material/Grid2";
 import {
@@ -12,16 +12,27 @@ import {
   Button,
   Link,
   FormHelperText,
+  InputAdornment,
+  IconButton
 } from "@mui/material";
+import { Visibility, VisibilityOff } from "@mui/icons-material";
 import { useUser } from "../context/UserContext";
 import { users } from "../db/users";
 import { useFormik } from "formik";
 import * as Yup from "yup";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Form = () => {
+  const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
   const { updateUser } = useUser();
 
+  // Notifications
+  const notifyLogin = () => toast.success("Login Successful!");
+  const notifyLoginFail = () => toast.error("Login Failed!");
+
+  // Validation schema using Yup
   const validationSchema = Yup.object({
     email: Yup.string()
       .required("Email is required")
@@ -41,6 +52,7 @@ const Form = () => {
       ),
   });
 
+  // Formik hook
   const formik = useFormik({
     initialValues: {
       email: "",
@@ -55,21 +67,21 @@ const Form = () => {
 
       if (currentUser) {
         updateUser(currentUser);
-        alert("Login Successful");
-        navigate("/dashboard");
+        notifyLogin(); 
+        navigate("/dashboard", notifyLogin());;
       } else {
-        alert("Login Failed. Incorrect credentials.");
+        notifyLoginFail();
       }
     },
   });
 
+  // Password visibility toggle function
+  const togglePasswordVisibility = () => {
+    setShowPassword(!showPassword);
+  };
+
   return (
-    <Grid
-      container
-      justifyContent="center"
-      alignItems="center"
-      sx={{ minHeight: "100vh" }}
-    >
+    <Grid container justifyContent="center" alignItems="center" sx={{ minHeight: "100vh" }}>
       <Grid item="true">
         <Paper elevation={3} style={{ padding: "50px", borderRadius: "30px" }}>
           <form onSubmit={formik.handleSubmit}>
@@ -97,12 +109,23 @@ const Form = () => {
                 <Input
                   id="pass-input"
                   name="password"
-                  type="password"
                   value={formik.values.password}
                   onChange={formik.handleChange}
                   onBlur={formik.handleBlur}
                   placeholder="Enter your password"
                   style={{ padding: "10px" }}
+                  type={showPassword ? "text" : "password"}
+                  endAdornment={
+                    <InputAdornment position="end">
+                      <IconButton
+                        onClick={togglePasswordVisibility}
+                        edge="end"
+                        aria-label={showPassword ? "Hide password" : "Show password"}
+                      >
+                        {showPassword ? <VisibilityOff /> : <Visibility />}
+                      </IconButton>
+                    </InputAdornment>
+                  }
                 />
                 {formik.touched.password && formik.errors.password && (
                   <FormHelperText error sx={{ width: "150px" }}>
@@ -111,11 +134,7 @@ const Form = () => {
                 )}
               </FormControl>
 
-              <Button
-                type="submit"
-                variant="contained"
-                style={{ marginTop: "12px" }}
-              >
+              <Button type="submit" variant="contained" style={{ marginTop: "12px" }}>
                 Login
               </Button>
 
@@ -128,6 +147,7 @@ const Form = () => {
           </form>
         </Paper>
       </Grid>
+      <ToastContainer />
     </Grid>
   );
 };

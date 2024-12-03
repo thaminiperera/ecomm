@@ -7,6 +7,7 @@ import SearchIcon from "@mui/icons-material/Search";
 import { useNavigate } from "react-router-dom";
 import TopBar from "../components/TopBar.jsx";
 import { useUser } from "../context/UserContext.jsx";
+import { ToastContainer } from "react-toastify";
 
 const Dashboard = () => {
   const { userData } = useUser();
@@ -38,6 +39,7 @@ const Dashboard = () => {
 
   return (
     <div style={{ position: "relative" }}>
+      <ToastContainer/>
       <Box>
         <TopBar />
 
