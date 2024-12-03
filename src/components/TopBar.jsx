@@ -8,7 +8,6 @@ const TopBar = () => {
   const navigate = useNavigate();
   const { userData } = useUser();
 
-
   const handleCartClick = () => {
     navigate("/cart");
   };
@@ -20,8 +19,8 @@ const TopBar = () => {
     <Grid2
       container
       alignItems={"center"}
-      justifyContent={"space-between"}
-      sx={{ width: "100%" }}
+      justifyContent={{lg: "space-between", md: "space-between", sm: "space-between", xs: "center"}}
+      sx={{ width: "100%" ,position: "fixed", backgroundColor: "#ffffff", zIndex: 99, top:0, borderBottom: "1px solid #eeeeee" }}
     >
       <Button
         onClick={handleLogoClick}
@@ -53,15 +52,11 @@ const TopBar = () => {
         justifyContent={"flex-end"}
         gap={2}
         columns={{ xs: 1 }}
+        sx={{ margin: 2 }}
       >
-        <Typography variant="h6" sx={{ padding: 2, marginLeft: 2 }}>
-          Hi {userData.firstName}
-        </Typography>
-        <Button
-          varient="outlined"
-          sx={{ marginRight: 2 }}
-          onClick={handleCartClick}
-        >
+        <Button variant="outlined">Logout</Button>
+        <Typography variant="h6">Hi {userData.firstName}</Typography>
+        <Button varient="outlined" onClick={handleCartClick}>
           <ShoppingCartIcon fontSize="large" />
         </Button>
       </Grid2>
