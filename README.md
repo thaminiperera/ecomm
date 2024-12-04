@@ -319,7 +319,14 @@ Key Features:
 
 ---
 
-## Potential Improvements
+## Assests : 
+
+- Logo : https://www.svgrepo.com/
+- Product List : https://gist.github.com/nefejames/bbeda8f257d7fa94b3e863926e730875
+
+---
+
+## Potential Improvements :
 
 - Session Management
   Implement session expiration mechanisms for security.
