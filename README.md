@@ -148,7 +148,8 @@ This will start the development server and open the application in your default 
 ## Component Breakdown : 
 
 1. **App Component**
-    The root component that sets up routing, context providers, and global notifications.
+
+The root component that sets up routing, context providers, and global notifications.
 
 Key Features:
 - Routing: Manages the main routes (/login, /register, /dashboard, /cart) and redirects the root path (/) to the login page temporarily.
@@ -156,7 +157,10 @@ Key Features:
 - Notifications: Displays toast notifications for user interactions.
 
 2. **Dashboard Page**
-    Displays a list of products and allows users to search, filter, and view product details.
+
+![Dashboard](images/dash.png)
+
+Displays a list of products and allows users to search, filter, and view product details.
 
 Key Features:
 - Search: Allows users to search products by title.
@@ -164,7 +168,10 @@ Key Features:
 - Product Cards: Each product is displayed in a ProductCard component.
 
 3. **Cart Page**
-    Shows the user's shopping cart, including the items they’ve added, their prices, and the total cost.
+
+![Cart Page](images/cart.png)
+
+Shows the user's shopping cart, including the items they’ve added, their prices, and the total cost.
 
 Key Features:
 - CartProductCard: Displays each item in the cart, including its price and quantity.
@@ -172,7 +179,10 @@ Key Features:
 - Navigation: Provides an option to proceed to checkout.
 
 4. **Login Component**
-    Handles user login, validating credentials and managing session state.
+
+![Login](images/login.png)
+
+Handles user login, validating credentials and managing session state.
 
 Key Features:
 - Form Validation: Ensures valid email format and secure password handling with Formik and Yup.
@@ -180,7 +190,10 @@ Key Features:
 - Navigation: On successful login, redirects the user to the dashboard.
 
 5. **Register Component**
-    Allows new users to create an account.
+
+![Sign Up](images/register.png)
+
+Allows new users to create an account.
 
 Key Features:
 - Form Validation: Ensures required fields and password security.
@@ -188,35 +201,41 @@ Key Features:
 - Navigation: After successful registration, redirects the user to the dashboard.
 
 6. **CartProductCard Component**
-    Displays individual products in the cart, allowing users to update quantities or remove items.
+
+Displays individual products in the cart, allowing users to update quantities or remove items.
 
 Key Features:
 - Quantity Control: Integrated with the QuantityMeter component to adjust product quantity.
 - Remove Product: A button to remove the product from the cart.
 
 7. **ProductCard Component**
-    Displays product details such as the title, description, and price, and includes an option to add the product to the cart.
+
+Displays product details such as the title, description, and price, and includes an option to add the product to the cart.
 
 Key Features:
 - Add to Cart: A button that allows users to add the product to their cart.
 - Quantity Adjustment: After adding to the cart, users can modify the product quantity.
 
 8. **QuantityMeter Component**
-    Allows users to adjust the quantity of a product in the cart.
+    
+Allows users to adjust the quantity of a product in the cart.
 
 Key Features:
 - Increment/Decrement: Buttons to increase or decrease the product quantity.
 - State Management: Updates the cart context whenever the quantity changes.
 
 9. **TopBar Component**
-    A navigation bar that provides key navigation features like going to the dashboard, viewing the cart, and logging out.
+
+A navigation bar that provides key navigation features like going to the dashboard, viewing the cart, and logging out.
 
 Key Features:
 - Dynamic Display: Shows the user’s first name if logged in.
 - Cart Icon: Displays a shopping cart icon for quick access to the cart.
 
 ### User Context
-    The UserContext manages user authentication and persists user data (such as cart contents and login status) across page reloads using localStorage.
+
+
+The UserContext manages user authentication and persists user data (such as cart contents and login status) across page reloads using localStorage.
 
 Key Features:
 - Persistence: Saves user data to localStorage to ensure that the user’s session persists even after a page reload.
@@ -240,6 +259,8 @@ Key Features:
 
 - Mobile-Friendly:
     The use of Material-UI's Grid2 layout ensures that the design adapts to different screen sizes, ensuring users on mobile devices or smaller screens can still access key features without loss of functionality.
+
+![Dashboard](images/mobile_size.png)![Dashboard](images/tablet_size.png)![Dashboard](images/dash.png)
 
 2. **Design Consistency**
 
