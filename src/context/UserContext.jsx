@@ -24,7 +24,10 @@ export const UserProvider = ({ children }) => {
   };
 
   const logout = () => {
+    
     localStorage.removeItem("userDataEcomm");
+    setUserData(null)
+    
   };
 
   return (
