@@ -104,6 +104,7 @@ This will start the development server and open the application in your default 
 ### Login Details
 
 email: graham@gmail.com
+
 password: Graham1234*
 
 (or use any other on the src/db/users.js file)
