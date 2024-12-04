@@ -1,7 +1,7 @@
 
 # Installation Guide : 
 
-This guide will walk you through cloning the repository and setting up Ecomm on your local machine.
+This guide will walk you through cloning the repository and setting up **Ecomm** on your local machine.
 
 ## Prerequisites
 
@@ -56,7 +56,7 @@ Node.js and npm: Required to run a React project.
     npm install
     ```
 
- If the project uses Yarn instead of npm, use:
+- If the project uses Yarn instead of npm, use:
 
     ```bash
     yarn install
@@ -70,7 +70,7 @@ Node.js and npm: Required to run a React project.
     npm run dev
     ```
 
-Or, if using Yarn:
+- Or, if using Yarn:
 
     ```bash
     yarn start
