@@ -101,6 +101,15 @@ Node.js and npm: Required to run a React project.
 
 This will start the development server and open the application in your default web browser. By default, it runs on http://localhost:5173.
 
+### Login Details
+
+email: graham@gmail.com
+
+password: Graham1234*
+
+- or use any other on the src/db/users.js file
+
+
 ---
 
 ## Main Directories and Files:
