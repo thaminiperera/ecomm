@@ -35,7 +35,7 @@ const Cart = () => {
         gap={3}
         sx={{
           marginTop: {
-            xs: "150px",
+            xs: "200px",
             sm: "100px",
           },
         }}

@@ -27,7 +27,7 @@ const TopBar = () => {
       container
       alignItems={"center"}
       justifyContent={{lg: "space-between", md: "space-between", sm: "space-between", xs: "center"}}
-      sx={{ width: "100%" ,position: "fixed", backgroundColor: "#ffffff", zIndex: 99, top:0, borderBottom: "1px solid #eeeeee" }}
+      sx={{ width: "90%" ,position: "fixed", backgroundColor: "#ffffff", zIndex: 99, top:0, borderBottom: "1px solid #eeeeee" }}
     >
       <Button
         onClick={handleLogoClick}

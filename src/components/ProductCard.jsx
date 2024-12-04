@@ -62,8 +62,8 @@ const ProductCard = ({ product }) => {
             }}
           />
           <Divider />
-          <Box sx={{ marginTop: 2, width: "100%", height: "40px" }}>
-            <Typography sx={{ fontSize: 14 }}>{product.title}</Typography>
+          <Box sx={{ marginTop: 2, width: "100%", height: "70px",  overflow: "hidden"  }}>
+            <Typography sx={{ fontSize: 14, fontWeight: "bold",}}>{product.title}</Typography>
           </Box>
           <Box
             sx={{

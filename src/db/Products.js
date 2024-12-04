@@ -2,6 +2,7 @@ const products = [
   {
     id: 1,
     title: "Laptop Backpack",
+    category: "Electronics",
     price: 109.95,
     description: "A cool laptop backpack",
     image: "https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg",
@@ -10,6 +11,7 @@ const products = [
   {
     id: 2,
     title: "Casual T-Shirt for Men",
+    category: "Apparel",
     price: 22.3,
     description: "Slim-fitting style, t-shoty for men",
     image:
@@ -19,6 +21,7 @@ const products = [
   {
     id: 3,
     title: "Mens Cotton Jacket",
+    category: "Apparel",
     price: 55.99,
     description: "Great outerwear jackets for spring, autumn, or winter.",
     image: "https://fakestoreapi.com/img/71li-ujtlUL._AC_UX679_.jpg",
@@ -27,6 +30,7 @@ const products = [
   {
     id: 4,
     title: "Mens Casual Slim Fit",
+    category: "Apparel",
     price: 15.99,
     description: "An aweome shirt for men",
     image: "https://fakestoreapi.com/img/71YXzeOuslL._AC_UY879_.jpg",
@@ -35,6 +39,7 @@ const products = [
   {
     id: 5,
     title: "Women's Gold & Silver Bracelet",
+    category: "Jewellery",
     price: 695,
     description: "A very cool bracelet.",
     image: "https://fakestoreapi.com/img/71pWzhdJNwL._AC_UL640_QL65_ML3_.jpg",
@@ -43,6 +48,7 @@ const products = [
   {
     id: 6,
     title: "Solid Gold Petite Micropave",
+    category: "Jewellery",
     price: 168,
     description: "A very cool jewlery for women",
     image: "https://fakestoreapi.com/img/61sbMiUnoGL._AC_UL640_QL65_ML3_.jpg",
@@ -51,6 +57,7 @@ const products = [
   {
     id: 7,
     title: "White Gold Plated Princess",
+    category: "Jewellery",
     price: 9.99,
     description: "A great diamond engagement ring for her.",
     image: "https://fakestoreapi.com/img/71YAIFU48IL._AC_UL640_QL65_ML3_.jpg",
@@ -59,11 +66,17 @@ const products = [
   {
     id: 8,
     title: "Gold-plated Earrings",
+    category: "Jewellery",
     price: 10.99,
     description: "Rose Gold Plated Double Flared Tunnel Plug Earrings.",
     image: "https://fakestoreapi.com/img/51UDEzMJVpL._AC_UL640_QL65_ML3_.jpg",
     rating: 1.9,
   },
+  
 ];
 
 export default products;
+
+
+
+
