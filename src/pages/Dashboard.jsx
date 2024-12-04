@@ -146,7 +146,7 @@ const Dashboard = () => {
           </Grid2>
         </Grid2>
 
-        <Box sx={{ width: "100%", padding: "0px", margin:0.5, width:"95%"}}>
+        <Box sx={{ width: "100%", padding: "0px", margin:0.5}}>
           <Grid2
             container
             spacing={{ xs: 1, md: 1}}
