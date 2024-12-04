@@ -29,41 +29,41 @@ Node.js and npm: Required to run a React project.
 - Navigate to the directory where you want to clone the project:
 
 ```cd /path/to/your/directory
-```
+
 
 Clone the repository using Git:
 
 ``` git clone <https://github.com/thaminiperera/ecomm.git>
-```
+
 
 Navigate into the project directory:
 
 ```cd repository-name
-```
+
 
 2. Install Dependencies
 
 React projects use npm or yarn to manage dependencies. Run the following command to install all necessary packages:
 
 ```npm install
-```
+
 
 If the project uses Yarn instead of npm, use:
 
 ```yarn install
-```
+
 
 3. Start the Development Server
 
 Run the following command to start the development server:
 
 ```npm run dev
-```
+
 
 Or, if using Yarn:
 
 ```yarn start
-```
+
 
 This will start the development server and open the application in your default web browser. By default, it runs on http://localhost:5173.
 
