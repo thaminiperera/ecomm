@@ -275,7 +275,7 @@ Key Features:
 - Mobile-Friendly:
   The use of Material-UI's Grid2 layout ensures that the design adapts to different screen sizes, ensuring users on mobile devices or smaller screens can still access key features without loss of functionality.
 
-<img src="images/mobile_size.png" alt="Dashboard" width="20%"/><img src="images/tablet_size.png" alt="Dashboard" width="30%"/><img src="images/dash.png" alt="Dashboard" width="40%"/>
+<img src="images/dash.png" alt="Dashboard" width="40%"/>  <img src="images/tablet_size.png" alt="Dashboard" width="30%"/>  <img src="images/mobile_size.png" alt="Dashboard" width="20%"/>
 
 2. **Design Consistency**
 
