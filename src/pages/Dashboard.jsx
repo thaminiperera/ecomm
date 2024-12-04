@@ -1,10 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import ProductCard from "../components/ProductCard";
 import products from "../db/Products.js";
 import { Box, Button, Grid2, TextField } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
+import { toast } from 'react-toastify';
 
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import TopBar from "../components/TopBar.jsx";
 import { useUser } from "../context/UserContext.jsx";
 import { ToastContainer } from "react-toastify";
@@ -14,6 +15,24 @@ const Dashboard = () => {
   const [search, setSearch] = useState();
   const [productData, setProductData] = useState(products);
   const navigate = useNavigate();
+  const location = useLocation();
+
+  useEffect(() => {
+    if (location.state?.message) {
+      toast.success(location.state.message, {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+       
+        });
+    }
+    navigate(location.pathname, { replace: true });
+  }, [location.state]);
 
   const handleSearch = () => {
     const searchedProducts = products.filter((item) => {
@@ -39,7 +58,7 @@ const Dashboard = () => {
 
   return (
     <div style={{ position: "relative" }}>
-      <ToastContainer/>
+      <ToastContainer />
       <Box>
         <TopBar />
 

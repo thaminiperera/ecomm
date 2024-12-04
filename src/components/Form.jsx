@@ -68,7 +68,7 @@ const Form = () => {
       if (currentUser) {
         updateUser(currentUser);
         notifyLogin(); 
-        navigate("/dashboard", notifyLogin());;
+        navigate('/dashboard', { state: { message: 'Login Successful' } });
       } else {
         notifyLoginFail();
       }

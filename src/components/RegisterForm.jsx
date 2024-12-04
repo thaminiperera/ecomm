@@ -64,7 +64,7 @@ const RegisterForm = () => {
         cart: [],
       });
       updateUser(newUser);
-      navigate("/dashboard");
+      navigate('/dashboard', { state: { message: 'Sign Up Successful' } });
     },
   });
 
