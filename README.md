@@ -107,7 +107,9 @@ email: graham@gmail.com
 
 password: Graham1234*
 
-(or use any other on the src/db/users.js file)
+- or use any other on the src/db/users.js file
+
+
 ---
 
 ## Main Directories and Files:
